@@ -43,7 +43,7 @@ class Workout extends React.Component {
       )
     })
     return(
-      <table>
+      <table className="workout-table">
         <tbody>
           {exercises}
         </tbody>
@@ -57,14 +57,15 @@ class Workout extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <div className="workout-container">
         <OptionsForm selectedLevel={this.state.level}
                      changeLevel={this.changeLevel} />
-        Your Workout: {this.exerciseTable()}
-        <button onClick={this.getExerciseData}>
+        <h1>Your Workout</h1>
+        {this.exerciseTable()}
+        <button className="generate-workout-button" onClick={this.getExerciseData}>
           Generate
         </button>
-      </React.Fragment>
+      </div>
     )
   }
 }

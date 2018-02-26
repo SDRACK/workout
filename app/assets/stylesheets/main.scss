@@ -1,0 +1,24 @@
+body {
+  color: #FFD700;
+  background-color: #000;
+
+  font-family: "Arial Black";
+}
+
+.workout-container {
+    width: 100%;
+
+    text-align: center;
+}
+
+.workout-table {
+  margin: auto;
+}
+
+.generate-workout-button {
+  padding: 5px 15px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #8B008B;
+}
