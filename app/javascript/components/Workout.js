@@ -8,10 +8,11 @@ class Workout extends React.Component {
 
     var self = this
 
-    self.state = { exercises: [] }
+    self.state = { exercises: [], level: 1 }
 
     self.getExerciseData = this.getExerciseData.bind(this)
     self.exerciseTable = this.exerciseTable.bind(this)
+    self.changeLevel = this.changeLevel.bind(this)
     // this.state = {
     //   color: props.initialColor
     // };
@@ -51,13 +52,18 @@ class Workout extends React.Component {
     )
   }
 
+  changeLevel (e) {
+    this.setState({ level: parseInt(e.currentTarget.value) })
+  }
+
   render () {
     return (
       <React.Fragment>
-        <OptionsForm selectedLevel="2" />
+        <OptionsForm selectedLevel={this.state.level}
+                     changeLevel={this.changeLevel} />
         Your Workout: {this.exerciseTable()}
         <button onClick={this.getExerciseData}>
-          WOW
+          Generate
         </button>
       </React.Fragment>
     )
