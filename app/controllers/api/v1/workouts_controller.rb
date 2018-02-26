@@ -2,12 +2,11 @@ module Api
   module V1
     class WorkoutsController < ActionController::API
       def show
-        @exercises = Exercise.all
+        @exercises = Exercise.group(:bodypart, :id)
+                             .select('distinct on (bodypart) *')
+                             .order('bodypart, random()')
+                             .shuffle
 
-        Exercise::BODYPARTS.map do |bp|
-          @exercises.select { |e| e[:bodypart] == bp }.sample
-        end.shuffle
-        
         render json: @exercises
       end
     end
