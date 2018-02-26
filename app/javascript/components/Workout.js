@@ -13,9 +13,6 @@ class Workout extends React.Component {
     self.getExerciseData = this.getExerciseData.bind(this)
     self.exerciseTable = this.exerciseTable.bind(this)
     self.changeLevel = this.changeLevel.bind(this)
-    // this.state = {
-    //   color: props.initialColor
-    // };
   }
 
   componentDidMount() {
@@ -34,12 +31,14 @@ class Workout extends React.Component {
   }
 
   exerciseTable() {
+    var currentLevel = this.state.level
     const exercises = this.state.exercises.map((exercise, i) => {
       return (
         <tr key={i}>
           <td>{exercise.name}</td>
           <td>{exercise.bodypart}</td>
           <td>{exercise.description}</td>
+          <td>{exercise.reps_by_level[currentLevel]}</td>
         </tr>
       )
     })
@@ -74,11 +73,3 @@ class Workout extends React.Component {
 //   greeting: PropTypes.string
 // };
 export default Workout
-
-// axios.get('/user?ID=12345')
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
