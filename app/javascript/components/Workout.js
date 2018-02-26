@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import OptionsForm from "./OptionsForm"
 import axios from "axios"
 class Workout extends React.Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class Workout extends React.Component {
   render () {
     return (
       <React.Fragment>
+        <OptionsForm selectedLevel="2" />
         Your Workout: {this.exerciseTable()}
         <button onClick={this.getExerciseData}>
           WOW
