@@ -7,12 +7,33 @@ class OptionsForm extends React.Component {
 
     var self = this
 
-    self.buildLevels = this.buildLevels.bind(this)
+    self.buildExerciseLevels = this.buildExerciseLevels.bind(this)
+    self.buildExerciseRepLevels = this.buildRepLevels.bind(this)
+    self.buildBodyparts = this.buildBodyparts.bind(this)
   }
 
-  buildLevels() {
-    return [1, 2, 3].map((level, i) => {
+  buildExerciseLevels() {
+    return this.props.exerciseLevels.map((level, i) => {
       var id = `level_${level}`
+      return (
+        <span key={i}>
+          <label htmlFor={id}>
+            {level}
+          </label>
+          <input type="checkbox"
+          id={id}
+          name="exercise_level[]"
+          value={level}
+          defaultChecked={true}
+          onClick={this.props.changeExerciseLevels} />
+        </span>
+      )
+    })
+  }
+  
+  buildRepLevels() {
+    return [1, 2, 3].map((level, i) => {
+      var id = `rep_level_${level}`
       return (
         <span key={i}>
           <label htmlFor={id}>
@@ -20,10 +41,10 @@ class OptionsForm extends React.Component {
           </label>
           <input type="radio"
           id={id}
-          name="level"
+          name="rep_level"
           value={level}
-          defaultChecked={level == this.props.selectedLevel}
-          onClick={this.props.changeLevel} />
+          defaultChecked={level == this.props.selectedRepLevel}
+          onClick={this.props.changeRepLevel} />
         </span>
       )
     })
@@ -54,8 +75,11 @@ class OptionsForm extends React.Component {
         Bodyparts:<br />
         {this.buildBodyparts()}
         <br />
-        Level:<br />
-        {this.buildLevels()}
+        Exercise Levels:<br />
+        {this.buildExerciseLevels()}
+        <br />
+        Rep Level:<br />
+        {this.buildRepLevels()}
         <br />
         I have a chinup bar:<br />
         <input type="checkbox" name="include_bar" defaultChecked={true} onClick={this.props.toggleBar} />
