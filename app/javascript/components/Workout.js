@@ -22,6 +22,7 @@ class Workout extends React.Component {
     self.changeBodyparts = this.changeBodyparts.bind(this)
     self.toggleDynamic = this.toggleDynamic.bind(this)
     self.toggleBar = this.toggleBar.bind(this)
+    self.capitalize = this.capitalize.bind(this)
   }
 
   componentDidMount() {
@@ -47,10 +48,11 @@ class Workout extends React.Component {
     const exercises = this.state.exercises.map((exercise, i) => {
       return (
         <tr key={i}>
-          <td>{exercise.name}</td>
-          <td>{exercise.bodypart}</td>
+          <td>{this.capitalize(exercise.name)}</td>
+          <td>{this.capitalize(exercise.bodypart)}</td>
           <td>{exercise.description}</td>
-          <td>{exercise.reps_by_level[this.state.repLevel]}</td>
+          <td>{this.capitalize(exercise.level)}</td>
+          <td>{`${exercise.reps_by_level[this.state.repLevel]} ${exercise.reps_by_level.unit}`}</td>
         </tr>
       )
     })
@@ -104,6 +106,10 @@ class Workout extends React.Component {
     this.state.exerciseLevels = currentExerciseLevels
     this.getExerciseData()
   }
+  
+  capitalize(word) {
+    return word[0].toUpperCase() + word.slice(1);
+  }
 
   render () {
     return (
@@ -126,7 +132,4 @@ class Workout extends React.Component {
   }
 }
 
-// Workout.propTypes = {
-//   greeting: PropTypes.string
-// };
 export default Workout
