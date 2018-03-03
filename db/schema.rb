@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20180225230005) do
     t.string "name"
     t.text "description"
     t.integer "bodypart"
+    t.integer "level"
     t.integer "flags", default: 0, null: false
     t.text "reps_by_level"
     t.index ["bodypart"], name: "index_exercises_on_bodypart"
     t.index ["flags"], name: "index_exercises_on_flags"
+    t.index ["level"], name: "index_exercises_on_level"
   end
 
 end
