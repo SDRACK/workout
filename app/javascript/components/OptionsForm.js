@@ -10,6 +10,7 @@ class OptionsForm extends React.Component {
     self.buildExerciseLevels = this.buildExerciseLevels.bind(this)
     self.buildExerciseRepLevels = this.buildRepLevels.bind(this)
     self.buildBodyparts = this.buildBodyparts.bind(this)
+    self.capitalize = this.capitalize.bind(this)
   }
 
   buildExerciseLevels() {
@@ -18,7 +19,7 @@ class OptionsForm extends React.Component {
       return (
         <span key={i}>
           <label htmlFor={id}>
-            {level}
+            {this.capitalize(level)}
           </label>
           <input type="checkbox"
           id={id}
@@ -56,7 +57,7 @@ class OptionsForm extends React.Component {
       return (
         <span key={i}>
           <label htmlFor={id}>
-            {bodypart}
+            {this.capitalize(bodypart)}
           </label>
           <input type="checkbox"
           id={id}
@@ -67,6 +68,10 @@ class OptionsForm extends React.Component {
         </span>
       )
     })
+  }
+  
+  capitalize(word) {
+    return word[0].toUpperCase() + word.slice(1);
   }
 
   render () {

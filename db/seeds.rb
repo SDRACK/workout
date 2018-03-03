@@ -229,6 +229,7 @@ full_body_exercises = [
 
 Exercise.create(leg_exercises +
                 core_exercises +
+                chest_exercises +
                 shoulder_exercises +
                 back_exercises +
                 full_body_exercises)
