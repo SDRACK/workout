@@ -68,7 +68,7 @@ class Workout extends React.Component {
   }
   
   toggleDynamic (e) {
-    this.state.includeDynamic = e.currentTarget.value
+    this.state.includeDynamic = e.currentTarget.checked
     this.getExerciseData()
   }
   
